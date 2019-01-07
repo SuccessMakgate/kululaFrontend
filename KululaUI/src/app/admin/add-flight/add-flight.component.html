@@ -1,0 +1,64 @@
+
+    <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card">
+          <div class="center-align adminColor">
+            <h2>Add Flight</h2>
+          </div>
+          
+        </div>
+        
+        <form class="col s12 adminFormColor" #addFlightForm="ngForm" (ngSubmit)="OnSubmit(addFlightForm)">
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text"  name="AircraftNo"  #AircraftNo="ngModel" [(ngModel)]="addFlight.AircraftNo" required>
+              <label for="AircraftNo">Flight No</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="AircraftName" type="text"  #AircraftName="ngModel" [(ngModel)]="addFlight.AircraftName" required>
+              <label for="AircraftName">Flight Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="MaxSeats" type="number"  #MaxSeats="ngModel" [(ngModel)]="addFlight.MaxSeats" required>
+              <label for="MaxSeats">Number Of Seats</label>
+            </div>
+          </div>
+          
+          <div class="row">
+              <div class="input-field col s6">
+                  <input name="price" type="number" #price="ngModel" [(ngModel)]="addFlight.price" required>
+                  <label for="price">Flight Price :R)</label>
+                </div>
+           </div>
+           <div class="row">
+            <div class="input-field col s6">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Logo</span>
+                  <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload Flight Logo">
+                </div>
+              </div>
+            </div>
+            <div class="input-field col s6">
+              <img [src]="imageUrl" style="width:250px;height:200px;background-color: burlywood">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <button [disabled]="Image.value=='' || !addFlightForm.valid" class="btn-large btn-submit" type="submit">Add Flight</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  
+  
+  

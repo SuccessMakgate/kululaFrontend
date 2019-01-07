@@ -1,0 +1,73 @@
+<div id="payForm" style="margin:20px 0 0 80px">
+  <div class="btn-group">
+      <ul class="nav nav-tabs">
+          <li class="dropdown ">
+              <button class="dropdown-toggle" data-toggle="dropdown" href="#">Payment Method<span class="caret"></span></button>
+              <ul class="dropdown-menu" id="PaymentTabs">
+                  <li><a rel="creditcard" >Credit Card</a></li>
+                  <li><a rel="eft" >EFT</a></li>
+                  <li><a rel="snapscan">Snap Scan</a></li>
+              </ul>
+          </li>
+      </ul>
+      <h3 id="flightFees"><span class="label label-info"></span></h3>
+  </div>
+
+  <div class="tab-content" id="PayContent">
+      <!--credit card-->
+      <div class="tab-pane active" id="creditcard">
+          <h2>Please! Fill credit card details</h2>
+          <img src="src/images/creditcards.jpg" class="img-rounded" style="margin:5px 0 10px 5px" width="300" height="30">
+          <div class="form-group">
+              <input type="text" style="width: 20%;" id="txtCardholder" placeholder="Card Holder (Initial and Surname)" />
+              <input type="text" id="txtCardNum" placeholder="Card Number" />
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <div class="input-field col s6">
+                <select id="IsCarhire" class="browser-default">
+                    <option value="" disabled selected>Paying For ?</option>
+                    <option value=true>Carhire Payment</option>
+                    <option value=false>Flight Payment</option>
+                </select>
+            </div>
+          </div>
+          <div class="input-field col s6">
+            <p><label>
+                
+          </label></p>
+        </div>
+      </div>
+      
+          <button type="button" id="btnPayment" class="add_field_button">Make Payment</button>
+      </div>
+      <!--EFT-->
+      <div class="tab-pane" id="eft">
+          <h2>Kulula Bank Details</h2>
+          <div class="container">
+              <div class="form-group well">
+                  <img src="src/images/absa.jpg" class="img-rounded" alt="Cinque Terre" width="40" height="30">
+                  <p>Account Name: Kulula Flights <br />Bank: Absa <br />Account No: 14784745<br />Branch Code: 14741<br />Reference : </p>
+              </div>
+              <div class="form-group well">
+                  <img src="src/images/fnb.jpg" class="img-rounded" alt="Cinque Terre" width="40" height="30">
+                  <p>Account Name: Kulula Flights <br />Bank: FNB <br />Account No: 14784746<br />Branch Code: 14742<br />Reference : </p>
+              </div>
+              <div class="form-group well">
+                  <img src="src/images/standard.jpg" class="img-rounded" alt="Cinque Terre" width="40" height="30">
+                  <p>Account Name: Kulula Flights <br />Bank: Standard Bank <br />Account No: 14784747<br />Branch Code: 14743<br />Reference : </p>
+              </div>
+          </div>
+      </div>
+       <!--Snap scan-->
+      <div class="tab-pane" id="snapscan">
+          <div class="container well">
+              <h2>Snap Scan</h2>
+              <p>Please scan a code below to make a payment</p>
+              <img src="src/images/snapscan.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+          </div>
+      </div>
+  </div>
+
+</div>
+<router-outlet></router-outlet>

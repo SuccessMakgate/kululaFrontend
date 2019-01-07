@@ -1,0 +1,60 @@
+<div *ngIf="!vall" id="row">
+  <div class="col s8 offset-s2">
+    <div class="center-align" ><h2 class="z-depth-5 green">Flight Book History</h2></div>
+         <div *ngIf="!IsError" class="col-md-12">
+             <div class="row" >
+                 <div class="col-md-2"><label class="green">Departure</label></div>
+                 <div class="col-md-2"><label class="green">Destination</label></div>
+                 <div class="col-md-2"><label class="green">#People Booked</label></div>
+                 <div class="col-md-2"><label class="green">Depart Date</label></div>
+                 <div class="col-md-2"><label class="green">Return Date</label></div>
+                 <div class="col-md-2"><label class="green">Trip Type</label></div>
+             </div>
+             <div class="row" *ngFor="let Data of [historyData[0]]">
+                <div class="col s8"><span class="peru">{{Data.DepartPlace}} </span></div>
+                <div class="col s8"><span class="peru">{{Data.DestPlace}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.NumPeople}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.DepartDate}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.returnDate}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.IsReturn}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[1]]">
+                <div class="col-md-2"><span class="peru">{{Data.DepartPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DestPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.NumPeople}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DepartDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.returnDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[2]]">
+                <div class="col-md-2"><span class="peru">{{Data.DepartPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DestPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.NumPeople}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DepartDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.returnDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[3]]">
+                <div class="col-md-2"><span class="peru">{{Data.DepartPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DestPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.NumPeople}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DepartDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.returnDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[4]]">
+                <div class="col-md-2"><span class="peru">{{Data.DepartPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DestPlace}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.NumPeople}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DepartDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.returnDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+               </div>
+           </div>
+           <div *ngIf="IsError" class="col-md-12 red">
+              <h4>{{username}} :You do not have any flight book history</h4>
+            
+           </div>
+      </div>
+ 
+  

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card">
+          <div class="center-align peru"><h2>Modify Personal Details</h2>
+            <div *ngIf="IsError" class="card red-text center error-message"><h6>Error</h6>
+              <p>{{errorMsg}}</p>
+          </div></div>
+        </div>
+        <form class="col s12 FormColor" #Modify_DetailsForm="ngForm" (ngSubmit)="OnSubmit(Modify_DetailsForm)">    
+            <div class="row">
+              <div class="input-field col s6">
+                  <input  type="text"  name="Email" value="za@za.aa"  #Email="ngModel" [(ngModel)]="clientDetails.Email" required>
+                  <label for="IdNumber">Email Address</label>
+            </div>
+            <input type="hidden"  name="IdNumber"  #IdNumber="ngModel" [(ngModel)]="clientDetails.IdNumber">
+            <input type="hidden"  name="ClientID"  #ClientID="ngModel" [(ngModel)]="clientDetails.ClientID">
+            <input type="hidden"  name="Gender"  #Gender="ngModel" [(ngModel)]="clientDetails.Gender">
+           </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text"  name="FirstName"  #FirstName="ngModel" [(ngModel)]="clientDetails.FirstName" required>
+              <label for="FirstName">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input name="LastName" type="text"  #LastName="ngModel" [(ngModel)]="clientDetails.LastName" required>
+              <label for="LastName">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="Address" type="text"  #Address="ngModel" [(ngModel)]="clientDetails.Address" required>
+              <label for="Address">Physical Address</label>
+            </div>
+            <div class="input-field col s6">
+              <input name="PhoneNo" type="text"  #PhoneNo="ngModel" [(ngModel)]="clientDetails.PhoneNo" required>
+              <label for="PhoneNo">Phone #</label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  <button  class="btn-large btn-submit" type="submit">Confirm</button>
+                  <div *ngIf="btnSubmitClick && !IsError && !IsComplete" class="progress">
+                      <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </div>
+          
+        </form>
+        <div *ngIf="IsComplete" class="alert alert-success center">
+          <h2><strong>Success!</strong></h2> Profile Modified Successfully.
+      </div>
+      </div>
+      
+    </div>
+</div>

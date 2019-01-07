@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card">
+          <div class="center-align peru">
+            <h2>Shuttle Book</h2>
+            <div *ngIf="IsError" class="card red-text center error-message"><h6>Carhire Error</h6>
+              <p>{{errorMsg}}</p>
+            </div>
+          </div>
+          
+        </div>
+         
+        <form class="col s12 FormColor" #CarhirForm="ngForm" (ngSubmit)="OnSubmit(CarhirForm)">    
+          <div class="row">
+              <div class="input-field col s6">
+                  <input type="text"  name="pickUp"  #pickUp="ngModel" [(ngModel)]="Carhire.pickUp" required>
+                  <label for="pickUp">Pick Up Address</label>
+                  <div class="error-message" *ngIf="pickUp.invalid && pickUp.touched ">pick up address required!</div>
+                </div>
+            <div class="input-field col s6">
+              <input type="text"  name="DropOff"  #DropOff="ngModel" [(ngModel)]="Carhire.DropOff" required>
+              <label for="DropOff">Drop Off Address</label>
+              <div class="error-message" *ngIf="DropOff.invalid && DropOff.touched ">drop off address required!</div>
+            </div>
+            <div class="input-field col s6">
+              <input type="text" name="PickDate" bsDatepicker [bsConfig]="dateinputs"   #PickDate="ngModel" [(ngModel)]="Carhire.PickDate" required>
+              <label for="PickDate">Pick Up Date and Time</label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  <select name="IsReturn" #IsReturn="ngModel" [(ngModel)]="Carhire.IsReturn" class="browser-default">
+                    <option value="" disabled selected>Select Trip Type</option>
+                    <option value=false>OneWay</option>
+                    <option value=true>Return</option>
+                  </select>
+              </div>
+              <div class="input-field col s6">
+                  <button id="showId" class="btn-large btn-submit" type="button">Choose a Car</button>
+                  <select  name="CarName" #CarName="ngModel" [(ngModel)]="Carhire.CarName" id="carsId" class="browser-default hide">
+                    <option value="" disabled selected>Select Car Model</option>
+                  </select>
+              </div>
+            <div class="input-field col s6">
+              <span id="detailsId" class="breadcrumb hide">
+                <div id="img"></div>
+                <ul class="collection">
+                    <li class="collection-item grey" >
+                      <span id="price"></span><br/>
+                      <span id="year"></span><br/>
+                      <span id="color"></span><br/>
+                    </li>
+                </ul>
+              </span>
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  <button [disabled]="!CarhirForm.valid"  class="btn-large btn-submit" type="submit">Confirm</button>
+                  <div *ngIf="btnSubmitClick && !IsError" class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+                </div>
+            </div>
+          
+        </form>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Kulula cars with more space for your stuff</h5>
+            <p class="card-text"><img src="/src/images/adv/luggae.jpg" style="width:450px;height:200px;background-color: burlywood"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Kulula Special offer</h5>
+            <p class="card-text"><img src="/src/images/adv/50off.jpg" style="width:450px;height:200px;background-color: burlywood"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

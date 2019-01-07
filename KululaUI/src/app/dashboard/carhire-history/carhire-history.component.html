@@ -1,0 +1,60 @@
+<div id="row">
+  <div class="col s8 offset-s2">
+    <div class="center-align" ><h2 class="z-depth-5 green">Cahires History</h2></div>
+         <div *ngIf="!IsError" class="col-md-12">
+             <div class="row" >
+                <div class="col-md-2"><label class="green">Pick Up</label></div>
+                <div class="col-md-2"><label class="green">Drop Off</label></div>
+                <div class="col-md-2"><label class="green">Pick Up Date</label></div>
+                <div class="col-md-2"><label class="green">Trip Type</label></div>
+                <div class="col-md-2"><label class="green">Hired CarName</label></div>
+                <div class="col-md-2"><label class="green">Payment Status</label></div>
+             </div>
+             <div class="row" *ngFor="let Data of [historyData[0]]">
+              <div class="col-md-2"><span class="peru">{{Data.pickUp}} </span></div>
+              <div class="col-md-2"><span class="peru">{{Data.DropOff}}</span></div>
+              <div class="col-md-2"><span class="peru">{{Data.PickDate}}</span></div>
+              <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+              <div class="col-md-2"><span class="peru">{{Data.CarName}}</span></div>
+              <div class="col-md-2"><span class="peru">{{Data.PaymentStatus}}</span></div>
+             </div>
+             <div class="row" *ngFor="let Data of [historyData[1]]">
+                <div class="col-md-2"><span class="peru">{{Data.pickUp}} </span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DropOff}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PickDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.CarName}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PaymentStatus}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[2]]">
+                <div class="col-md-2"><span class="peru">{{Data.pickUp}} </span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DropOff}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PickDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.CarName}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PaymentStatus}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[3]]">
+                <div class="col-md-2"><span class="peru">{{Data.pickUp}} </span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DropOff}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PickDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.CarName}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PaymentStatus}}</span></div>
+               </div>
+               <div class="row" *ngFor="let Data of [historyData[4]]">
+                <div class="col-md-2"><span class="peru">{{Data.pickUp}} </span></div>
+                <div class="col-md-2"><span class="peru">{{Data.DropOff}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PickDate}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.IsReturn}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.CarName}}</span></div>
+                <div class="col-md-2"><span class="peru">{{Data.PaymentStatus}}</span></div>
+               </div>
+         </div>
+         <div *ngIf="IsError" class="col-md-12 red">
+            <h4>{{username}} :You do not have any carhire history</h4>
+          
+         </div>
+   </div>
+  
+ </div>

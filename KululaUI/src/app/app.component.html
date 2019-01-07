@@ -1,0 +1,17 @@
+
+<p  class="btn waves-effect waves-light">Hello :{{Login}}</p><a class="btn btn-submit peru" (click)="logout()">{{btnValue}}</a>
+<div *ngIf="!open">
+    <div class="alert alert-success" >
+        <strong>Success!</strong> Your kulula account email verified successfully
+        <button type="button" class="close" (click)="hideAlert()">&times;</button>
+    </div>
+</div>
+
+
+  <div class="d-flex flex-row" style="background-color:rgb(187, 248, 187);">
+      <div class="container z-depth-5"><router-outlet></router-outlet> </div>
+  </div>
+
+  
+
+

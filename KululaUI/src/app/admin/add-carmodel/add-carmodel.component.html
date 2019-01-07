@@ -1,0 +1,88 @@
+
+  <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card">
+          <div class="center-align adminColor">
+            <h2>Add CarModel</h2>
+          </div>
+          
+        </div>
+        <div class="col-12">
+        </div>
+        <form class="col s12 adminFormColor" #addCarForm="ngForm" (ngSubmit)="OnSubmit(addCarForm)">
+          <div class="row">
+              
+            <div class="input-field col s6">
+              <input type="text"  name="CarName"  #CarName="ngModel" [(ngModel)]="addCars.CarName" required>
+              <label for="CarName">Car Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="CarColour" type="text"  #CarColour="ngModel" [(ngModel)]="addCars.CarColour" required>
+              <label for="CarColour">Car Colour</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="YearModel" type="text"  #YearModel="ngModel" [(ngModel)]="addCars.YearModel" required>
+              <label for="YearModel">Year Model</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <p><label>
+                  <input type="checkbox" value="true"  name="LeatherSeat"  #LeatherSeat="ngModel" [(ngModel)]="addCars.LeatherSeat" />
+                  <span>Is Leather Seat?</span>
+            </label></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <p><label>
+                <input type="checkbox" value="true" name="Radio_Cd" #Radio_Cd="ngModel" [(ngModel)]="addCars.Radio_Cd" />
+                <span>Features TV Player?</span>
+          </label></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <p><label>
+              <input type="checkbox" value="true"  name="AirBag" #AirBag="ngModel" [(ngModel)]="addCars.AirBag" />
+              <span>Features AirBag?</span>
+        </label></p>
+      </div> 
+     </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  <input name="price" type="number" #price="ngModel" [(ngModel)]="addCars.price" required>
+                  <label for="price">Hiring Price :R)</label>
+                </div>
+              </div>
+              <div class="row">
+            <div class="input-field col s6">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Image</span>
+                  <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" multiple> >
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload Image">
+                </div>
+              </div>
+            </div>
+            <div class="input-field col s6">
+              <img [src]="imageUrl" style="width:250px;height:200px;background-color: burlywood">
+            </div>
+          </div> 
+          <div class="row">
+            <div class="input-field col s6">
+              <button [disabled]="Image.value=='' || !addCarForm.valid" class="btn-large btn-submit" type="submit">Add CarModel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  
+  

@@ -1,0 +1,27 @@
+<ng-container *ngIf="!IsError; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+<div class="card center-align green"><h6>Kulula Discounts</h6></div>
+<div class="row" *ngFor="let memberPay of [memberpayment]">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-content green">
+        <span>UserName :{{ memberPay.MembersEmail}}</span>
+        <br/>
+        <span>Discount (%) :{{ memberPay.discount}}%</span>
+        <br/>
+        <span>Kulula Points Earned :{{ memberPay.kululaPoints}}pts</span>
+        <br/>
+        <span>Transaction Date {{ memberPay.TransnDate}}</span>
+        <br/>
+        <span>Payment Ref {{ memberPay.PaymentId}}</span>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div> 
+</ng-template>
+<ng-template #elseTemplate>
+    <div class="d-flex flex-row">
+        <div class="container z-depth-5"><span></span> </div>
+    </div>
+</ng-template>

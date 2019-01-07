@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-sm-3 FormColor" >
+      <div class="z-depth-5 background"> <div class="chip"><h2>Don't be a  </h2></div> <h1>#Travel Hater </h1></div>
+      <ul>
+        <li>Travel more with Kulula for less  </li>
+        <li>Register with Kulula to travel less all the time  </li>
+      </ul>
+      <div class="chip" ><img src="/src/images/adv/lovefly.jpg" style="width:450px;height:200px;background-color: burlywood"></div>
+      <div class="chip" ><img src="/src/images/adv/lovetral.jpg" style="width:200px;height:100px;background-color: burlywood"></div>
+    </div>
+    <div class="col s8 offset-s2">
+      <div class="card FormColor">
+        <div class="card center-align peru" >
+          <h2>Flight Search</h2>
+          <div *ngIf="IsError" class="card red-text center error-message"><h6>Flight Search Error</h6>
+            <p>{{errorMsg}}</p>
+          </div>
+        </div>
+      </div>
+      <form class="col s12 FormColor" #flightSearchForm="ngForm" (ngSubmit)="OnSubmit(flightSearchForm)">
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text"  name="DestPlace"  #DestPlace="ngModel" [(ngModel)]="FSearch.DestPlace" required>
+            <label for="DestPlace">Destination</label>
+            <div class="error-message" *ngIf="DestPlace.invalid && DestPlace.touched ">Place of destination required!</div>
+          </div>
+          <div class="input-field col s6">
+            <input name="DepartPlace" type="text"  #DepartPlace="ngModel" [(ngModel)]="FSearch.DepartPlace" required>
+            <label for="DepartPlace">Departure</label>
+            <div class="error-message" *ngIf="DepartPlace.invalid && DepartPlace.touched ">Place of departure required!</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="DepartDate" type="text" bsDatepicker  [bsConfig]="dateinputs"  #DepartDate="ngModel" [(ngModel)]="FSearch.DepartDate" required>
+            <label for="DepartDate">Date Of Depature</label>
+          </div>
+          <div class="input-field col s6">
+            <input name="NumPeople" type="text" #NumPeople="ngModel" [(ngModel)]="FSearch.NumPeople" required>
+            <label for="NumPeople">Number Of People</label>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+              <select name="IsReturn" #IsReturn="ngModel" [(ngModel)]="FSearch.IsReturn" class="browser-default">
+                <option value="" disabled selected>Select Trip Type</option>
+                 <option value="true" >Return</option>
+                 <option value="false">One Way</option>
+              </select>
+          </div>
+          <div id="returnDate"  class="input-field col s6 hide">
+            <input type="text" bsDatepicker [bsConfig]="dateinputs"   name="returnDate"  #returnDate="ngModel" [(ngModel)]="FSearch.returnDate" >
+            <label for="returnDate">Return Date</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <button  [disabled]="!flightSearchForm.valid" class="btn-large btn-submit" type="submit">Search Flight</button>
+            <div *ngIf="btnSubmitClick && !IsError" class="progress">
+              <div class="indeterminate"></div>
+          </div>
+          </div>
+          <div class="input-field col s6">
+           <div class="card-group" style="background-color: ivory">
+              <p><a href="/account/login">Login</a></p>
+              <p>Client login account for reservation discounts and general updates</p>
+            </div>
+              <p><a href="/account/register">Not yet registered ?</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Travel less with most comfortable flights</h5>
+          <p class="card-text"><img src="/src/images/adv/takinoff.jpg" style="width:450px;height:200px;background-color: burlywood"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Kulula Special offer</h5>
+          <p class="card-text"><img src="/src/images/adv/lowcost.png" style="width:450px;height:200px;background-color: burlywood"></p>
+        </div>
+      </div>
+    </div>
+  </div>

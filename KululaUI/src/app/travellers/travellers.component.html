@@ -1,0 +1,95 @@
+
+<div class="container">
+    <h3>Travellers Details</h3>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </div>
+
+  <div class="tabbable-panel center">
+      <div class="tabbable-line">
+          <ul class="nav nav-tabs" id="tabs">
+              <li class="" id="id_main"><a class="waves-effect waves-light btn "   rel="tab_main" data-toggle="tab">Add Main Traveller</a></li>
+              <li class="" id="id_other"><a class="waves-effect waves-light btn"   rel="tab_other" data-toggle="tab">Add Other Traveller(s)</a></li>
+          </ul>
+          <div class="tab-content ">
+              <div class="tab-pane active" id="tab_main">
+                  <app-main-traveller></app-main-traveller>
+               </div>
+               <div class="tab-pane " id="tab_other">
+                 <div *ngFor="let countss of countss">
+                    <div class="container">
+                      <div class="row">
+                          <div class="col s8 offset-s2">
+                            <div class="card">
+                              <div class="center-align peru">
+                                <h2>Other Traveller Details<span class="red">(optional)</span></h2>
+                              </div>
+                            </div>
+                            <form class="col s12 FormColor" #Add_TravellersForm="ngForm" (ngSubmit)="OnSubmit(Add_TravellersForm)">    
+                             <div class="row"><div *ngIf="IsError" class="red-text center error-message">Add Details Error :Can not reach Server</div></div>
+                              <div class="row">
+                                  <div class="input-field col s6">
+                                      <input type="text"  name="IdNumber"  #IdNumber="ngModel" [(ngModel)]="Travellers.IdNumber" required>
+                                      <label for="IdNumber">ID Number</label>
+                               </div>
+                                <div class="input-field col s6">
+                                  <input type="text"  name="FirstName"  #FirstName="ngModel" [(ngModel)]="Travellers.FirstName" required>
+                                  <label for="FirstName">First Name</label>
+                                </div>
+                                <div class="input-field col s6">
+                                  <input name="LastName" type="text"  #LastName="ngModel" [(ngModel)]="Travellers.LastName" required>
+                                  <label for="LastName">Last Name</label>
+                                </div>
+                              </div>
+                              <div class="row">
+                                  <div class="input-field col s6">
+                                      <select name="Gender" #Gender="ngModel" [(ngModel)]="Travellers.Gender" class="browser-default">
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                      </select>
+                                  </div>
+                                  <div class="input-field col s6">
+                                      <select name="Contact" #Contact="ngModel" [(ngModel)]="Travellers.Contact" class="browser-default">
+                                        <option value="" disabled selected>Preferred Contact</option>
+                                        <option value="Male">Email</option>
+                                        <option value="Female">Phone Call</option>
+                                      </select>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                <label>Contact Details</label>
+                                <div class="input-field col s6">
+                                    <input  type="text"  name="Email"  #Email="ngModel" [(ngModel)]="Travellers.Email" required>
+                                    <label for="IdNumber">Email Address</label>
+                               </div>
+                               <div class="input-field col s6">
+                                <input name="PhoneNo" type="text"  #PhoneNo="ngModel" [(ngModel)]="Travellers.PhoneNo" required>
+                                <label for="PhoneNo">Phone #</label>
+                               </div>
+                               <div class="input-field col s6">
+                                  <input name="Address" type="text"  #Address="ngModel" [(ngModel)]="Travellers.Address" required>
+                                  <label for="Address">Physical Address</label>
+                               </div>
+                              </div>
+                              <div class="row">
+                               <div class="input-field col s2">
+                                  <button  class="btn-large btn-submit" type="submit">Add</button>
+                                  <div *ngIf="btnSubmitClick && !IsError" class="progress">
+                                   <div class="indeterminate"></div>
+                                  </div>
+                              </div>
+                            </div>    
+                          </form>
+                        </div>    
+                      </div>
+                    </div>
+                    
+                  </div>
+                  
+               </div>
+         </div>
+     </div>
+  </div>

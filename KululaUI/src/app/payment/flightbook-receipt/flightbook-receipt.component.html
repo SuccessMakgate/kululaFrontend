@@ -1,0 +1,120 @@
+<ng-container *ngIf="!IsError; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+    <div style="background-color:powderblue; width: 50%;">
+        <div class="card center-align green"><h6>Flight Payment Success</h6></div>
+         <div class="row">
+          <div class="col s12 m6">
+            <div  class="card green">
+             <div id="contentToConvert" class="green">
+              <div class="card-content white-text">
+                <span class="card-title"><img class="circle" src="/src/kululaIcon.jpg" style="width:100px;height:50px;background-color: aqua">Receipt</span>
+                <p>Thank you for choosing kulula ,you are welcome to make any changes on reservation in 24 hours
+                   after reservation was approved T&C's apply
+                </p>
+              </div>
+             <div class="{{background}}">
+               <div class="card-content transbox white" >
+                  <div *ngFor="let Data of [ReceiptData]">
+                      <p>KULULA Flight Book RECEIPT of {{Data.memberIDF}}</p><span class="pull-right">Date : {{now.toLocaleDateString()}}</span>
+                      <br/><span class="pull-right">Time : {{now.toLocaleTimeString()}}</span><br/>
+                      <span>........................................................</span>
+                      <span>Payment Of : Flight Seat</span>
+                      <br/>
+                      <span>Outstanding Amount R:0</span> 
+                      <br/>
+                      <span>Departure Airport : {{Data.DepartPlace}} </span>
+                      <br/>
+                      <span>Destination Airport:{{Data.DestPlace}}</span>
+                      <br/>
+                      <span>Date & Time of Departure :{{Data.DepartDate}} </span>
+                     <br/>
+                    <ng-container *ngIf="[Data.IsReturn]; else elseTemplate">
+                     <span>Date & Time of Return: {{Data.returnDate}}</span>
+                     <br/>
+                    </ng-container>
+                   <ng-template #elseTemplate>
+                    <span>Trip Type : One Way Trip </span>
+                    <br/>
+                   </ng-template>
+                   <span>Number Of People Travelling :{{Data.NumPeople}}</span>
+                   <br/>
+                </div>
+                <div *ngFor="let Data of [ReceiptSeatData]">
+                    <span>Seat Name :{{Data.SeatName}}</span> 
+                    <br/>
+                    <span>Seat Number : {{Data.SeatNumber}} </span>
+                    <br/>
+                    <span>Seat Price : {{Data.SeatPrice}} </span>
+                    <br/>
+                   <span>..................................................................</span><br/>
+                   <span>Grand Total :R {{total*NPeople}} </span>
+                   <br/>
+                </div>
+               </div>
+            </div>
+          </div>
+           <div class="card-action">  
+             <div *ngIf="onSave2pdf" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%">
+                      Downloading pdf... </div>
+                  <a (click)="save2pdf()">save to pdf<span class=" fa fa-file-pdf-o Size"></span></a>
+                  <a (click)="print()">print<span class=" fa fa-print Size"></span></a>
+                  <a (click)="openModal(template)" >email<span class=" fa fa-envelope Size"></span></a>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <ng-template #template >
+          <div class="modal-body green">
+              <div class="modal-dialog FormColor" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Sent to Email</h5>
+                      <button type="button" class="close" (click)="decline()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body FormColor">
+                      <form>
+                        <div class="container">
+                          <label for="recipient" class="col-form-label">Ticket will be sent to :
+                          <input type="text" class="form-control" name="recipient" #recipient="ngModel" [(ngModel)]="recipientValue"></label>
+                        </div>
+                     
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-error" (click)="decline()">Cancel</button>
+                      <button type="button" class="btn btn-success" (click)="email()" >Send Ticket</button>
+                    </div>
+                  </div>
+                </div>
+          </div>   
+        </ng-template>
+        <div class="modal fade " tabindex="-1" id="successModal" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Registration Successful</h2>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-success">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+ <div *ngIf="LoadDiscount"><app-member-payment></app-member-payment></div>
+</ng-template>
+<ng-template #elseTemplate>
+  <div class="card center-align red"><h6>Payment has not been received !</h6></div>
+  <span>Please Contact Customer's Care Service</span>
+</ng-template>

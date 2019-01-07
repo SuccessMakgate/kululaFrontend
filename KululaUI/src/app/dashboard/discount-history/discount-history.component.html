@@ -1,0 +1,53 @@
+<div *ngIf="!vall" id="row">
+  <div class="col s8 offset-s2">
+    <div class="center-align" ><h2 class="z-depth-5 green">Kulula Discounts History</h2></div>
+         <div *ngIf="!IsError" class="col-md-12">
+             <div class="row" >
+                 <div class="col-md-2"><label class="green">Reference</label></div>
+                 <div class="col-md-2"><label class="green">Transaction Date</label></div>
+                 <div class="col-md-2"><label class="green">Discount (%)</label></div>
+                 <div class="col-md-2"><label class="green">Kulula Points Earned</label></div>
+                 <div class="col-md-2"><label class="green">Payment Id</label></div>
+             </div>
+             <div class="row" *ngFor="let Data of [historyData[0]]">
+                <div class="col s8"><span class="peru">{{Data.DiscountRef}} </span></div>
+                <div class="col s8"><span class="peru">{{Data.TransnDate}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.discount}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.kululaPoints}}</span></div>
+                <div class="col s8"><span class="peru">{{Data.PaymentId}}</span></div>
+           </div>
+           <div class="row" *ngFor="let Data of [historyData[1]]">
+            <div class="col-md-2"><span class="peru">{{Data.DiscountRef}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.TransnDate}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.discount}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.kululaPoints}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.PaymentId}}</span></div>
+           </div>
+           <div class="row" *ngFor="let Data of [historyData[2]]">
+            <div class="col-md-2"><span class="peru">{{Data.DiscountRef}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.TransnDate}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.discount}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.kululaPoints}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.PaymentId}}</span></div>
+          </div>
+          <div class="row" *ngFor="let Data of [historyData[3]]">
+            <div class="col-md-2"><span class="peru">{{Data.DiscountRef}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.TransnDate}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.discount}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.kululaPoints}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.PaymentId}}</span></div>
+          </div>
+          <div class="row" *ngFor="let Data of [historyData[4]]">
+            <div class="col-md-2"><span class="peru">{{Data.DiscountRef}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.TransnDate}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.discount}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.kululaPoints}}</span></div>
+            <div class="col-md-2"><span class="peru">{{Data.PaymentId}}</span></div>
+          </div>
+         </div>
+         <div *ngIf="IsError" class="col-md-12 red">
+            <h4>{{username}} :You do not have any discounts history</h4>
+          
+         </div>
+   </div>
+ </div>

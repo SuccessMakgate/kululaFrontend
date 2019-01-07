@@ -1,0 +1,26 @@
+.Size
+  {
+    font-size:30px;
+  }
+  div.background {
+    background: url('/src/images/copyimg.jpg');
+}
+div.background_onload{
+  background: url('/src/images/loading--gif.gif');
+}
+
+div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    margin: 6%;
+    font-weight: bold;
+    color: #000000;
+}
+
+div.transbox p {
+  
+    font-weight: bold;
+    color: #000000;
+}

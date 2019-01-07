@@ -1,0 +1,206 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="tabbable-panel">
+          <div class="tabbable-line">
+              <ul class="nav nav-tabs" id="tabs">
+                  <li class="active" id="id_travellers"><a class="breadcrumb"   rel="tab_travellers" data-toggle="tab">Add Travellers <span class=" fa fa-chevron-right  angleSize"></span></a></li>
+                  <li class="active" id="id_flightSeat"><a class="breadcrumb"   rel="tab_flightSeat" data-toggle="tab">Flight Seat <span class=" fa fa-chevron-right  angleSize"></span></a></li>
+                  <li class="active" id="id_payment"><a class="breadcrumb"  rel="tab_payment" data-toggle="tab">Payment <span class="fa fa-check-square angleSize"></span></a></li>
+              </ul>
+              <div class="tab-content ">
+                <div class="tab-pane active" id="tab_travellers">
+                    <app-travellers></app-travellers>
+                 </div>
+                  <div class="tab-pane " id="tab_flightSeat">
+                      <div class="container">
+                          <ul class="nav nav-tabs">
+                                <div class="input-field col s6">
+                                        <div class="input-field col s6">
+                                          <select id="seatId" class="browser-default">
+                                              <option value="" disabled selected>Select Your Seat</option>
+                                              <option value="Standard Seat">Add R0</option>
+                                              <option value="Aisle chair">Add R250</option>
+                                              <option value="window seat">Add R300</option>
+                                              <option value="amenities Seat">Add R800</option>
+                                              <option value="First Class Seat">Add R1000</option>
+                                          </select>
+                                      </div>
+                                      <div class="input-field col s4">
+                                        <button id="btnPrepaid" class="btn btn-submit" type="button">Confirm Prepaid Seat</button>
+                                    </div>
+                                    </div>
+                                    
+                              <li class="text-right">
+                                  <h3 id="peoplecount"><span class="label label-info"></span></h3>
+                                  <h3 id="prepaidS"><span class="label label-info">Get Yourself a Prepaid Seat</span></h3>
+                                  <div class="container" id="prepaidS_img"></div>
+                              </li>
+                          </ul>
+
+                      </div>
+                  </div>
+                 
+                  <div class="tab-pane " id="tab_payment">
+                     <app-payment></app-payment>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+<style>
+  .well {
+      background-color: azure;
+      width: auto;
+      margin: 20px 0 0 80px;
+  }
+</style>
+
+
+
+
+
+<!-- <script type="text/javascript">
+  $(document).ready(function () {
+      var numPeopleBooked = 1; //sessionStorage.getItem('Number_People');
+      sessionStorage.removeItem('Number_People');
+      //===========================Get Schedule from "getSchedule.html"==================================================
+      var Id = sessionStorage.getItem('schedule');
+      sessionStorage.removeItem('schedule');
+      var address = 'api/SeatBookings/11';// to be changed
+      $.ajax({
+          url: address,
+          method: 'get',
+          success: function (data) {
+              $('#tabs #id_flightSeat').addClass('inactive');
+              sessionStorage.setItem('AircraftId', data[0].AircraftId);
+              console.log('success' + data[0].AircraftName, data);
+          },
+          error: function (jqXHR) {
+              console.log('Failled');
+          }
+      });
+
+      //===========================Get Schedule from "getSchedule.html"==================================================
+      $('#seatId li a').on('click', function () {
+          if (numPeopleBooked == 0) {
+              $('.tab-pane.active').slideUp(3, function () {
+                  $('#tab_payment').slideDown(300, function () {
+                      $(this).addClass('active');
+                      //To add : if client login in retrieve those info into form
+                  });
+              });
+              $('#tabs #id_payment').addClass('inactive');
+          }
+          else {
+              var selectSeat = $(this).attr('rel');
+              var ids = sessionStorage.getItem('AircraftId');
+              //sessionStorage.removeItem('AircraftId');
+              console.log('Vallluees', ids);
+              $.ajax({
+                  url: 'api/SeatBookings',
+                  method: 'post',
+                  data: {
+
+                      SeatNumber: numPeopleBooked,
+                      SeatName: selectSeat,
+                      AircraftId: ids,
+                      PaymentStatus: false,
+
+                  },
+                  success: function (seatData) {
+                      //$('#successmodal').modal('show');
+                      console.log("success", seatData);
+                      numPeopleBooked = numPeopleBooked - 1;
+                      $("#peoplecount span").empty().append(numPeopleBooked + ' Client(s) not booked a seat,Please Book another seat');
+                      // $(location).attr('href', "getSchedule.html");
+                      //window.location.href = data.redirecturl;
+                  },
+                  error: function (jqXHR) {
+                      console.log("fail" + jqXHR.responseText);
+                      $('#divErrorText').text(jqXHR.responseText);
+                      $('#divError').show('fade');
+                  }
+
+              })
+          }
+
+
+      });
+      //===========================Post Travellers (Non Functional)==================================================
+      //$('.btn-group ').on('click', '#submitTravellers', function () {
+      //    $('#addTravellers').attr("disabled", false);
+      //    console.log("success", $('#txtIdNumber').val());
+      //    $.ajax({
+      //        url: 'api/SeatBookings/travellers',
+      //        method: 'post',
+      //        data: {
+      //            IdNumber: $('#txtIdNumber').val(),
+      //            FirstName: $('#txtFName').val(),
+      //            LastName: $('#txtLName').val(),
+      //            Gender: $('#txtGender').val(),
+      //            AircraftId:1,
+      //        },
+      //        success: function (travellersData) {
+      //            //$('#successmodal').modal('show');
+      //            console.log("success", travellersData);
+      //            // $(location).attr('href', "getSchedule.html");
+      //            //window.location.href = data.redirecturl;
+      //        },
+      //        error: function (jqXHR) {
+      //            console.log("fail" + jqXHR.responseText);
+      //            $('#divErrorText').text(jqXHR.responseText);
+      //            $('#divError').show('fade');
+      //        }
+      //    })
+      //})
+
+
+      
+
+      $(function () {
+          $('#ExTabs li a').on('click', function () {
+              var panel = $(this).attr('rel');
+              console.log(panel);
+              $('#ExTabContent .tab-pane.active').slideUp(300, function () {
+                  $('#' + panel).slideDown(300, function () {
+                      $(this).addClass('active');
+
+                  });
+              });
+          })
+      });
+     
+              // ===========================Post Payment==================================================
+              $('#btnPayment').click(function () {
+                  $.ajax({
+                      url: 'api/payments',
+                      method: 'post',
+                      data: {
+                          PayMethod: selectList,
+                          AccHolder: $('#txtCardholder').val(),
+                          AccountNo: $('#txtCardNum').val(),
+                          CardNo: $('#txtCardNum').val(),
+                          IsCarhire: false,
+                          IsSeatBook:true,
+                      },
+                      success: function (travellersData) {
+                          //$('#successmodal').modal('show');
+                          console.log("success", travellersData);
+                          // $(location).attr('href', "getSchedule.html");
+                          //window.location.href = data.redirecturl;
+                      },
+                      error: function (jqXHR) {
+                          console.log("fail" + jqXHR.responseText);
+                          $('#divErrorText').text(jqXHR.responseText);
+                          $('#divError').show('fade');
+                      }
+                  })
+              })
+          })
+      });
+    
+      })
+  });
+</script> -->

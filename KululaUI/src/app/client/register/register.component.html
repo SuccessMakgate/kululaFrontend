@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+      <div class="col s8 offset-s2">
+        <div class="card FormColor">
+          <div class="center-align peru">
+            <h2>Registration</h2>
+            <div *ngIf="IsError" class="card red-text center error-message"><h6>Register Error</h6>
+              <p>{{errorMsg}}</p>
+          </div>
+        </div></div>
+        <form class="col s12 FormColor" #UserRegistrationForm="ngForm" (ngSubmit)="OnSubmit(UserRegistrationForm)">
+          <div class="row">
+            <div class="input-field col s6">
+              <input class="validate"  name="Email" type="text"  #Email="ngModel" [(ngModel)]="registration.Email" required >
+              <label for="Email" [attr.data-error]="Email.errors != null?(Email.errors.required?'required filed':'min 3 charactur nedde'):''">Email Address</label>
+            </div>
+            <div class="input-field col s6">
+                <button [disabled]="!UserRegistrationForm.valid" class="btn-large btn-submit" type="submit">Confirm</button>
+                <div *ngIf="btnSubmitClick && !IsError" class="progress">
+                  <div class="indeterminate"></div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input class="validate" name="Password" type="Password"  #password="ngModel" [(ngModel)]="registration.Password" required>
+              <label for="Password">Password</label>
+            </div>
+            <div class="input-field col s6">
+              <input name="ConfirmPassword" type="password" #ConfirmPassword="ngModel" [(ngModel)]="registration.ConfirmPassword" required>
+              <label for="ConfirmPassword">Confirm Password</label>
+            </div>
+            </div>
+            <div class="row center-align"><p>Already Registered?__ <a routerLink='account/login'> Log In</a></p></div>
+        </form>
+      
+      
+    </div>
+</div>

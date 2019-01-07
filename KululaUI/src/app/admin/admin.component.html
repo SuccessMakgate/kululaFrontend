@@ -1,0 +1,34 @@
+
+<div class="row adminColor">
+  <div class="col-md-12">
+      <h3>Kulula Flights Administration</h3>
+      <div class="tabbable-panel">
+          <div class="tabbable-line">
+              <ul class="nav nav-tabs" id="tabs">
+                  <li class="inactive" id="id_addCar"><a href="#" rel="tab_addCar" data-toggle="tab">Add New Car</a></li>
+                  <li class="active" id="id_addFlight"><a href="#" rel="tab_addFlight" data-toggle="tab">Add New Flight</a></li>
+                  <li class="active" id="id_addSchedule"><a href="#" rel="tab_addSchedule" data-toggle="tab">Add New Schedule</a></li>
+              </ul>
+              <div class="tab-content">
+                  <div class="tab-pane active" id="tab_addCar">
+                      <div class="container">
+                        <app-add-carmodel></app-add-carmodel>
+                      </div>
+                  </div>
+                  <div class="tab-pane " id="tab_addFlight">
+                      <div class="container">
+                        <app-add-flight></app-add-flight>
+                      </div>
+                 </div>
+                 <div class="tab-pane " id="tab_addSchedule">
+                  <div class="container">
+                     <app-add-flightschedule></app-add-flightschedule>
+                  </div>
+             </div>
+                 
+                 
+               </div>
+          </div>
+      </div>
+    </div> 
+ </div>
